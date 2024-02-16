@@ -37,7 +37,6 @@ StyleBullets[valeur].classList.add("dot_selected");
 
 Flechedoite.addEventListener("click", () => {
   ChangeSlide(+1);
-  console.log(Flechedoite);
 });
 
 Flechegauche.addEventListener("click", () => {
