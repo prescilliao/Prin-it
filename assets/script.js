@@ -20,8 +20,8 @@ const slides = [
 
 const Flechegauche = document.getElementById("left");
 const Flechedoite = document.getElementById("right");
-const TexteSlide = document.getElementById("photo");
-const ImageSlide = document.getElementById("texte");
+const TexteSlide = document.getElementById("texte");
+const ImageSlide = document.getElementById("photo");
 const PositionBoxDots = document.querySelector(".dots");
 
 let valeur = 0;
@@ -35,6 +35,25 @@ slides.forEach(() => {
 const StyleBullets = document.querySelectorAll(".dot");
 StyleBullets[valeur].classList.add("dot_selected");
 
-Flechedoite.addEventListener("click", () => {});
+Flechedoite.addEventListener("click", () => {
+  ChangeSlide(+1);
+  console.log(Flechedoite);
+});
 
-Flechegauche.addEventListener("click", () => {});
+Flechegauche.addEventListener("click", () => {
+  ChangeSlide(-1);
+});
+
+function ChangeSlide(sens) {
+  StyleBullets[valeur].classList.remove("dot_selected");
+  valeur = valeur + sens;
+  if (valeur < 0) {
+    valeur = slides.length - 1;
+  }
+  if (valeur > slides.length - 1) {
+    valeur = 0;
+  }
+  ImageSlide.src = slides[valeur].image;
+  TexteSlide.innerHTML = slides[valeur].tagLine;
+  StyleBullets[valeur].classList.add("dot_selected");
+}
